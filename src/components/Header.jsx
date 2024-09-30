@@ -69,8 +69,8 @@ const Header = ({ handleLogout }) => {
         
 
 
-        {console.log('u:', user) }
-        {console.log('u.dat:', userData, ' | au.dat:', adminUserData) }
+        {/* {console.log('u:', user) }
+        {console.log('u.dat:', userData, ' | au.dat:', adminUserData) } */}
         {
           user && (
           <li className="nav-item">

@@ -75,8 +75,8 @@ function App() {
   return (
     <div className='Hotel-App'>
       <BrowserRouter>
-        {console.log('userData?, ', userData, ' | adminUser?, ',  adminUserData)  }
-        {console.log('user?, ', user)  }
+        {/* {console.log('userData?, ', userData, ' | adminUser?, ',  adminUserData)  }
+        {console.log('user?, ', user)  } */}
         <Header handleLogout={handleLogout} />
         <Routes>
           <Route exact path='/' element={<HomePage/>  } />

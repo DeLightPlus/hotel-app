@@ -37,9 +37,10 @@ const RoomBookingModal = ({room}) =>
         console.log('Booking submitted:', roomType, checkInDate, checkOutDate, guests, adults, children, roomDescription);
     };
 
-    const handleCheckout = () =>
+    const handleCheckout = (event) =>
     {
-
+        event.preventDefault();
+        alert('processing your first payment...')
     }
 
   return (
