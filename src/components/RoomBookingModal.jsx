@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PaymentMethod from './PaymentForm';
 
 const RoomBookingModal = ({room}) => 
 {
@@ -16,6 +17,8 @@ const RoomBookingModal = ({room}) =>
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     const [roomDescription, setRoomDescription] = useState('');
+
+    const [checkoutInfo, setCheckoutInfo] = useState({ uid:user.uid, room:room.id, deposit: 0,  })
 
     const handleAdultsChange = (event) => {
         setAdults(event.target.value);
@@ -138,11 +141,10 @@ const RoomBookingModal = ({room}) =>
                                         userData !== null ? `eg.(${userData.lastname})` 
                                             : adminUserData !== null ? `eg.(${adminUserData.lastname})` : 'Lastname' }/> 
                             </div>
-                            <input text='email' id='email' placeholder={user !== null ? `eg.(${user.email})` : 'Email address'} /><br/>
+                            <input text='email' id='email' value={user.email} placeholder={user !== null ? `eg.(${user.email})` : 'Email address'} /><br/>
                             
                             <div>
-                                <select name="" id="code">
-                                    <option value="USA +1">USA +1</option>
+                                <select name="" id="code">                                    
                                     <option value="ZAR +27">ZAR +27</option>
                                 </select><input type='text' placeholder=' 00 000 0000'/>
                             </div>
@@ -156,7 +158,9 @@ const RoomBookingModal = ({room}) =>
                             </div>
                         </div>
 
-                        <div className='pay-method'>
+                        <PaymentMethod checkoutInfo={checkoutInfo}/>
+
+                        {/* <div className='pay-method'>
                             <strong>Payment Method</strong>
                             <h6>Name on Card</h6>
                             <input type='text' id='cardname'/><br/>
@@ -174,13 +178,23 @@ const RoomBookingModal = ({room}) =>
                                 <option value="2">02</option>
                             </select>                            
                             <h6>security code</h6>
-                            <input id='sec-code' placeholder='__/10'/> 
+                            <input id='sec-code' placeholder='cvc'/> 
                             <button onClick={handleCheckout}> checkout</button>
-                        </div>
+                        </div> */}
                           
                     </div>
+
                     <div className="room-showcase">
-                        <img width='400' src="https://cdn.pixabay.com/photo/2016/10/18/09/02/hotel-1749602_960_720.jpg"/>
+                        <div className="amenities">                        
+                            <ul style={{flexDirection:'row'}}>
+                                <strong>Amenities:</strong>
+                                <li><i className="fa fa-wifi"/></li>                            
+                                <li><i className="fa fa-hands-wash"/></li>  
+                                <li><i className="fa fa-concierge-bell"/></li>                                        
+                            </ul>                        
+                        </div>
+
+                        <img width='100%' src="https://cdn.pixabay.com/photo/2016/10/18/09/02/hotel-1749602_960_720.jpg"/>
                         <br/>
                         <select>
                             <option value="">Bedding Request(optional)</option>   

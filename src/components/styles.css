@@ -518,3 +518,19 @@ button[type="submit"]:hover
   font-size: 12px;
   margin-bottom: 10px;
 }
+
+.process_payment
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 99%;
+  background: #a4bacf;
+  text-align: center;
+  padding: 32px;
+}

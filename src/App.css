@@ -361,6 +361,12 @@ hr
   width: 86px;
   text-align: center;
 }
+#code
+{
+  padding: 2px;
+  width: 76px;
+  font-size: 12px;
+}
 
 .pay-method input[type='text'],[type='number']
 {
