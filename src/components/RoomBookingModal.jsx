@@ -158,7 +158,10 @@ const RoomBookingModal = ({room}) =>
                             </div>
                         </div>
 
-                        <PaymentMethod checkoutInfo={checkoutInfo}/>
+                        <PaymentMethod 
+                            checkoutInfo={checkoutInfo} 
+                            setCheckoutInfo={setCheckoutInfo}
+                        />
 
                         {/* <div className='pay-method'>
                             <strong>Payment Method</strong>

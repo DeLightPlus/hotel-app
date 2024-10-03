@@ -16,8 +16,7 @@ const BookingList = () =>
     const rooms_all = useSelector((state) => state.rooms.rooms_all);
     
     // const [rooms, setRooms] = useState([]);
-    // const [newRoom, setNewRoom] = useState({});
-   
+    // const [newRoom, setNewRoom] = useState({});   
 
     return(       
         <div>

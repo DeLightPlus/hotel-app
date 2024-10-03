@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { TailSpin } from "react-loader-spinner";
 import { FaCreditCard } from "react-icons/fa";
+import { FaCheckCircle } from 'react-icons/fa';
 
-const PaymentMethod = () => 
+const PaymentMethod = ({ paymentInfo, setCheckoutInfo }) => 
 {
     const [isProcessing, setProcessing] = useState(false);
-    const [isSuccess, setSuccess] = useState(false);
+    const [paymentSuccessful , setPaymentSuccessful ] = useState(true);
 
     const [name, setName] = useState('');
     const [cardNumber, setCardNumber] = useState('');
@@ -43,9 +44,10 @@ const PaymentMethod = () =>
 
         setErrors(errors);
 
-        if (Object.keys(errors).length === 0) {
-        // If all validations pass, proceed with checkout
-        console.log('Checkout successful!');
+        if (Object.keys(errors).length === 0) 
+        {
+            // If all validations pass, proceed with checkout
+            console.log('Checkout...', paymentInfo);
         }
     };
 
@@ -118,17 +120,33 @@ const PaymentMethod = () =>
         <br />
         <button onClick={handleCheckout}>Checkout</button>
 
+        {
+            isProcessing &&
+            <div className='process_payment'>           
 
-        {/* <div className='process_payment'>
-        Processing Your Payment <br/> Please Wait... <br/> 
-
-            <div className='loader'>
-                <TailSpin type="TailSpin" color="#00BFFF" height={128} width={128} />
-                <FaCreditCard size={40} color="#fff"
-                 style={{ position: 'absolute', top: '27%', left: '48%'  }} />
-            </div>
-        
-        </div> */}
+                
+                <div className='loader'>
+                {
+                    paymentSuccessful ? (
+                        <>
+                            <h2>Payment Successful</h2>
+                            <FaCheckCircle size={40} color="#00BFFF" style={{ position: 'absolute', top: '27%', left: '48%' }} />
+                        </>
+                    ) : (
+                        <>
+                            Processing Your Payment...<br/>
+                            Please wait for a few seconds<br/>
+                            <TailSpin type="TailSpin" color="#00BFFF" height={128} width={128} />
+                            <FaCreditCard size={40} color="#fff" style={{ position: 'absolute', top: '27%', left: '48%' }} />
+                        </>
+                    )
+                }
+                </div>        
+                
+            
+            </div> 
+        }
+       
     </div>
   );
 };
